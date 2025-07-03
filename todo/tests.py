@@ -98,7 +98,7 @@ class TodoViewTestCase(TestCase):
     def test_detal_get_success(self):
         task = Task(title='task1', due_at=timezone.make_aware(datetime(2024, 7, 1)))
         task.save()
-        client = Client
+        client = Client()
         response = client.get('/{}/'.format(task.pk))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.templates[0].name, 'todo/detail.html')
